@@ -139,7 +139,7 @@ export default function Header() {
         </nav>
       </div>
       {/* menu content */}
-      <div className={`relative scale-x-102 w-[70%] h-[400px] flex bg-background border-[1px] border-gray-300 dark:border-gray-700 rounded-lg bg-opacity-50 ${sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`absolute scale-x-102 w-[70%] h-[400px] flex bg-background border-[1px] border-gray-300 dark:border-gray-700 rounded-lg bg-opacity-50 ${sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <div className='w-1/2 flex z-10'>
 
           <div className='w-1/2 flex flex-col p-4 gap-6  bg-white dark:bg-secondary   rounded-l-lg'>

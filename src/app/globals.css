@@ -90,6 +90,7 @@
   align-items: center;
   gap: 18px;
 }
+
 #link-1:hover .arrow-line,
 #link-2:hover .arrow-line,
 #link-3:hover .arrow-line,
@@ -113,7 +114,7 @@
 }
 
 
-#link-1:hover > demo-dropdown {
+#link-1:hover>demo-dropdown {
   display: block;
   color: blueviolet;
 }
@@ -216,6 +217,25 @@
     padding-top: 48px;
     justify-content: center
   }
+
+  .hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 48px;
+  }
+
+  .hero-left {
+    width: 100%;
+    margin-bottom: 1%;
+  }
+
+  .hero-right {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5%;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 781px) {
@@ -248,12 +268,31 @@
     padding-top: 48px;
     justify-content: center
   }
+
+  .hero {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 48px;
+  }
+
+  .hero-left {
+    width: 100%;
+  }
+
+  .hero-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3%;
+  }
 }
 
 @media (max-width: 1199px) {
 
   .nav-item,
-  .theme-toggle{
+  .theme-toggle {
     display: none;
   }
 
@@ -272,6 +311,7 @@
   .feature-dropdown {
     width: 60rem;
   }
+
   .category-dropdown {
     width: 60rem;
   }
@@ -307,6 +347,62 @@
 
   .header {
     padding: 0 48px;
+  }
+
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .hero {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 48px;
+  }
+
+  .hero-left {
+    width: 100%;
+  }
+
+  .hero-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3%;
+  }
+
+}
+
+@media (max-width: 576px) {
+  .hero {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-left {
+    width: 100%;
+  }
+
+  .hero-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blog-card {
+    width: 100% !important;
+  }
+
+  .blog-card>.thumbnail,
+  .blog-card>.card-overlay {
+    border-radius: 0px;
+  }
+
+  .blog-card>.thumbnail {
+    object-fit: cover;
   }
 
 }

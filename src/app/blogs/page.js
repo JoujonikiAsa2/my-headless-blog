@@ -1,17 +1,7 @@
 "use client";
+import { fetchPosts } from '@/utils/useFetch';
 import React, { useEffect, useState } from 'react';
 
-const fetchPosts = async () => {
-
-    const query = `posts{nodes{id,title,content,uri, featuredImage{
-        node{
-          sourceUrl
-        }
-      }}}`
-    const res = await fetch(`http://localhost/blog/graphql?query={${encodeURIComponent(query)}}`);
-    if (!res.ok) throw new Error('Failed to fetch posts');
-    return res.json();
-};
 
 export default function PostsPage() {
     const [posts, setPosts] = useState([]);
