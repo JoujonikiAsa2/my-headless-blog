@@ -1,70 +1,37 @@
 import { useState, useEffect } from "react";
 
-export const useFetch = () => {
-  const [posts, setPosts] = useState([]);
+export const useFetch = ({
+  query = "",                        
+  variables = {},                    
+  url = "http://localhost/blog/graphql", 
+} = {}) => {                          
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const query = `
-          {
-            posts {
-              nodes {
-                id
-                title
-                content
-                excerpt
-                postReadingTime {
-                  readingTime
-                }
-                author {
-                  node {
-                    name
-                  }
-                }
-                categories {
-                  nodes {
-                    name
-                  }
-                }
-                commentCount
-                date
-                uri
-                featuredImage {
-                  node {
-                    sourceUrl
-                  }
-                }
-                categories {
-                  nodes {
-                    name
-                  }
-                }
-                commentCount
-                date
-                uri
-                featuredImage {
-                  node {
-                    sourceUrl
-                  }
-                }
-              }
-            }
-          }
-        `;
+    if (!query) return; 
 
-        const res = await fetch("http://localhost/blog/graphql", {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const res = await fetch(url, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ query }),
+          body: JSON.stringify({ query, variables }),
         });
 
-        if (!res.ok) throw new Error("Failed to fetch posts");
+        if (!res.ok) throw new Error("Failed to fetch data");
 
-        const data = await res.json();
-        setPosts(data.data.posts.nodes);
+        const json = await res.json();
+
+        if (json.errors) {
+          throw new Error(json.errors.map((e) => e.message).join(", "));
+        }
+
+        setData(json.data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -72,8 +39,8 @@ export const useFetch = () => {
       }
     };
 
-    fetchPosts();
-  }, []);
+    fetchData();
+  }, [query, JSON.stringify(variables), url]);
 
-  return { posts, loading, error };
+  return { data, loading, error };
 };

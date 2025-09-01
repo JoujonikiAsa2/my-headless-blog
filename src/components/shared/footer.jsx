@@ -1,11 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import youtubeLogo from '@/assets/icons/youtube.png'
-import twitterLogo from '@/assets/icons/twitter.png'
-import socialLogo from '@/assets/icons/social.png'
-import facebookLogo from '@/assets/icons/facebook.png'
 import { ChevronRight } from 'lucide-react'
+import SocialMedia from '../social-media'
 
 export default function Footer() {
   return (
@@ -16,12 +13,7 @@ export default function Footer() {
             <h1 className=''> Platform</h1>
           </Link>
           <p className='w-full'>Tech insights, trends, tools — plus cycling, <br/> wellness, and everyday life.</p>
-          <div className='contact-info'>
-            <Image src={youtubeLogo} alt="" className='size-6' />
-            <Image src={twitterLogo} alt="" className='size-6' />
-            <Image src={socialLogo} alt="" className='size-6' />
-            <Image src={facebookLogo} alt="" className='size-6' />
-          </div>
+          <SocialMedia/>
         </div>
         <div className='w-1/2 flex gap-12 links'>
           <div className=' demos w-1/3'>

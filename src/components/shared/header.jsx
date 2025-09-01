@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import React from 'react'
 import MenuToggle from '../menu-toggle'
-import { ChevronDown, ChevronRight, Lightbulb, MoonIcon, Search, Sun } from 'lucide-react'
+import { ChevronRight, Search, Sun } from 'lucide-react'
 import { FiMoon } from "react-icons/fi";
 
 import { Badge } from '../ui/badge'
@@ -39,7 +39,13 @@ export default function Header() {
                 className="peer flex gap-1 hover:text-[#687FE5]"
                 id="link-1"
               >
-                Demos
+                Demos <svg xmlns="http://www.w3.org/2000/svg"
+                  width="16" height="16" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" strokeWidth="2"
+                  strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="12" y1="4" x2="12" y2="18" className="arrow-line hidden" />
+                  <polyline points="6 12 12 18 18 12" />
+                </svg>
               </Link>
 
               <div className="demo-dropdown absolute top-13 left-13 w-64 bg-white dark:bg-secondary border border-gray-300 dark:border-gray-700 rounded-lg opacity-0 peer-hover:opacity-100 hover:opacity-100 transition-all duration-300 pointer-events-none hover:pointer-events-auto">
